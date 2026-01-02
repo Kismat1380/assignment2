@@ -1,15 +1,41 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import person.Employee;
+import person.Person;
+import person.Student;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+import java.util.ArrayList;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+
+public class Main {
+    public static void main(String[] args) throws FileNotFoundException {
+
+        File fileEmployee = new File("/Users/mikvi/IdeaProjects/assignment2/src/employee");
+        File fileStudent = new File("/Users/mikvi/IdeaProjects/assignment2/src/students");
+        Scanner scEmployee = new Scanner(fileEmployee);
+        Scanner scStudent = new Scanner(fileStudent);
+        ArrayList<Person> people = new ArrayList<>();
+        boolean isStudent = true;
+        add(scEmployee, people, !isStudent);
+        add(scStudent, people, isStudent);
+        printData(people);
+
+        Collections.sort(people);
+        System.out.println("Sorted");
+        printData(people);
+    }
+    public static void printData(Iterable<Person> people){
+        for(Person person : people){
+            System.out.println(person);
+        }
+    }
+    public static void add(Scanner sc, List<Person> p, boolean isStudent){
+        while(sc.hasNext()) {
+            if(isStudent){ p.add(new Student(sc.next(), sc.next(), sc.nextDouble())); }
+            else { p.add(new Employee(sc.next(), sc.next(), sc.next(), sc.nextDouble())); }
         }
     }
 }
