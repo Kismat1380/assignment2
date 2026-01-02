@@ -13,10 +13,10 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
 
-        File fileEmployee = new File("/Users/mikvi/IdeaProjects/assignment2/src/employee");
-        File fileStudent = new File("/Users/mikvi/IdeaProjects/assignment2/src/students");
-        Scanner scEmployee = new Scanner(fileEmployee);
-        Scanner scStudent = new Scanner(fileStudent);
+        File fileOfEmployee = new File("/Users/mikvi/IdeaProjects/assignment2/src/employee");
+        File fileOfStudent = new File("/Users/mikvi/IdeaProjects/assignment2/src/students");
+        Scanner scEmployee = new Scanner(fileOfEmployee);
+        Scanner scStudent = new Scanner(fileOfStudent);
         ArrayList<Person> people = new ArrayList<>();
         boolean isStudent = true;
         add(scEmployee, people, !isStudent);
